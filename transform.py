@@ -26,7 +26,7 @@ theta_rad = np.deg2rad(theta_deg)
 #R2 = trot2(theta_rad)
 #print(R2)
 
-#Rotación y traslación
+#Rotación y traslación A
 T0 = transl2(0,0) #Referencia
 trplot2(T0, frame="0", color="k")
 
@@ -34,6 +34,15 @@ TA = transl2(1, 2) @ trot2(30, 'deg') #Transformación A
 print(TA)
 trplot2(TA, frame="A", color="b")
 
+#Punto P
+P = np.array([4,3]) 
+plot_point(P, 'ko', text='P') 
+print(P)
+
+P1 = homtrans(np.linalg.inv(TA), P)
+print(P1)
+
+#Rotación y traslación B
 TB = trot2(30, 'deg') @ transl2(1, 2) #Transformación B
 print(TB)
 trplot2(TB, frame="B", color="r")
